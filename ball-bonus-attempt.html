@@ -1,0 +1,46 @@
+<div id="ball" style="
+  z-index:5;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:green">
+</div>
+
+<script>
+  var ball = document.getElementById('ball');   //gets "ball"
+
+var velocity = 50;   //This variable is used to change the movement speed.
+var step = 10;   //This variable is used to change the amount of movement per unit time.
+var positionX = 0;   //This variable stores the current or target position of the <img> element.
+var xMin = 0;   //This variable stores the minimum position value.
+var xMax = 300;   //This variable stores the maximum  position value.
+var direction = true;    //true moves right, false moves left
+
+
+function updateDirection() {   //This method is used to change the direction of movement.
+  if(positionX == xMax)
+    direction = false;
+  else if(positionX == xMin)
+    direction = true;
+}
+
+function moveBall() {
+  updateDirection();
+  
+  if(direction)
+    positionX += step;
+  else
+    positionX -= step;
+    
+  ball.style.left = `${positionX}px`;   //sets "ball" position
+  
+//  console.clear();  //commented out
+//  console.log(`Direction: ${direction ? "right" : "left"} Position: ${positionX} `);  //commented out
+}
+
+setInterval(moveBall, 100);   //Update the velocity value to change the movement speed.
+
+</script>
